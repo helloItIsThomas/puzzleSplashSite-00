@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Studio Puzzle</title>
+    <link rel="stylesheet" href="/styles/style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="mailForm">
+      <form id="myForm">
+        <label htmlFor='fName'>First Name</label>
+        <input type='text' required name='fName' id='fName'></input>
+        <br/>
+        <label htmlFor='lName'>Last Name</label>
+        <input type='text' required name='lName' id='lName'></input>
+        <br/>
+        <label htmlFor='email'>Email</label>
+        <input type='text' required name='email' id='email'></input>
+        <br/>
+        <label htmlFor='message'>Message</label>
+        <textarea rows={5} cols={50} required id='message' name='message'></textarea>
+        <br/>
+        <button type='submit'></button>
+      </form>
+    </div>
+
+    <script type="module" src="/scripts/scene.js"></script>
+    <canvas id="myCanvas"></canvas>
+    <p id="copyright"></p>
+    <script>
+      document
+        .getElementById('copyright')
+        .textContent = `COPYRIGHT ${new Date().getFullYear()}. ALL RIGHTS RESERVED`;
+    </script>
+  </body>
+</html>
