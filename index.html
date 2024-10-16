@@ -8,23 +8,28 @@
     <link rel="stylesheet" href="/styles/style.css">
   </head>
   <body>
-    <div id="app"></div>
     <div id="mailForm">
-      <form id="myForm">
-        <label htmlFor='fName'>First Name</label>
-        <input type='text' required name='fName' id='fName'></input>
-        <br/>
-        <label htmlFor='lName'>Last Name</label>
-        <input type='text' required name='lName' id='lName'></input>
-        <br/>
-        <label htmlFor='email'>Email</label>
-        <input type='text' required name='email' id='email'></input>
-        <br/>
-        <label htmlFor='message'>Message</label>
-        <textarea rows={5} cols={50} required id='message' name='message'></textarea>
-        <br/>
-        <button type='submit'></button>
-      </form>
+      <div id="formTop">
+        <div id="formHeader">
+          <div id="closeButton">X</div>
+          <ul>
+            <li>INSTAGRAM</li>
+            <li>LINKEDIN</li>
+          </ul>
+        </div>
+        <div id="formHeadline">Customer Services</div>
+      </div>
+      <div id="formBottom">
+        <form id="formFields">
+          <input type='text' required name='fName' id='fName'  placeholder="Name"></input>
+
+          <input type='text' required name='email' id='email' placeholder="Email"></input>
+
+          <textarea rows={5} cols={50} required id='message' name='message' placeholder="Message"></textarea>
+
+          <button type='submit'>Send</button>
+        </form>
+      </div>
     </div>
 
     <script type="module" src="/scripts/scene.js"></script>

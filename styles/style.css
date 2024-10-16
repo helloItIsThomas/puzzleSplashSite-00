@@ -2,9 +2,48 @@ html,
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  place-items: center;
   background-color: lightskyblue;
+  height: 100%;
+  width: 100%;
+}
+
+#myCanvas {
+  position: absolute;
+  z-index: 0;
+}
+
+#mailForm * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#mailForm {
+  font-size: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 36%;
+  min-width: fit-content;
+  min-height: 230px;
+  max-height: 800px;
+  max-width: 600px;
+  box-sizing: border-box;
+  background-color: #ffebe4;
+  border-radius: 10px;
+  position: absolute;
+  padding: 10px;
+  margin: 0;
+  z-index: 10;
+  top: 20px;
+  left: 20px;
+}
+
+form {
+  padding: 0;
+  margin: 0;
 }
 
 #copyright {
@@ -14,9 +53,123 @@ body {
   left: 20px;
 }
 
-#mailForm {
-  position: absolute;
-  z-index: 10;
-  top: 20px;
-  left: 20px;
+#formTop {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+#formHeader {
+  background-color: blue;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#formBottom {
+  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+}
+
+#closeButton {
+  /* position: absolute; */
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  font-size: 10px;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+
+#formTop ul {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: pink;
+  /* width: 100%; */
+  font-size: 100%;
+  padding: none;
+  margin: none;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+#formTop li {
+  height: 100%;
+  /* width: 100%; */
+  text-align: right;
+  font-size: clamp(0.5rem, 1vw, 1rem);
+  list-style-type: none;
+}
+
+#formHeadline {
+  font-size: clamp(1rem, 3vw, 3rem);
+
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+
+#myForm {
+  margin: 0;
+  padding: 0;
+}
+
+#formFields {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+#formFields input {
+  width: 100%;
+  /* min-width: 100%; */
+  border: none;
+  box-sizing: border-box;
+  /* margin-top: 3px; */
+  margin-bottom: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+#formFields textarea {
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  /* margin-top: 3px; */
+  /* margin-bottom: 3px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+#formFields button {
+  box-sizing: border-box;
+  border: none;
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  background-color: #000000;
+  width: 100%;
+  border-radius: 10px;
 }
