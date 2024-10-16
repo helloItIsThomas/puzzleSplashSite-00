@@ -1,3 +1,5 @@
+import { checkSubmit } from "./submitAnim";
+
 fetch("/html/form.html")
   .then((response) => response.text())
   .then((data) => {
@@ -5,4 +7,7 @@ fetch("/html/form.html")
     tempDiv.innerHTML = data;
     let divToMove = tempDiv.querySelector("#mailForm");
     document.getElementById("myForm").appendChild(divToMove);
+  })
+  .then((data) => {
+    checkSubmit();
   });
