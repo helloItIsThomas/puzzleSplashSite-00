@@ -1,6 +1,6 @@
 import emailJs from "@emailjs/browser";
 
-document.getElementById("myForm").addEventListener("submit", (e) => {
+document.getElementById("tutorialForm").addEventListener("submit", (e) => {
   e.preventDefault();
   handleSubmit(e);
 });
