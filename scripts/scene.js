@@ -1,7 +1,10 @@
 import * as THREE from "three";
 import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
+import { SceneUtils } from "three/examples/jsm/Addons.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; // Correct import
+
+let loadedObject;
 
 function modifyTexture(texture) {
   // Set anisotropy to the maximum supported by the device
@@ -26,8 +29,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1, // Near clipping plane
   1000 // Far clipping plane
 );
-// camera.position.set(0.6, 0.6, 0.6);
-camera.position.set(5, 10, 80); // Zoom the camera out by adjusting the z position
+camera.position.set(-50, 0, 80); // Zoom the camera out by adjusting the z position
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
@@ -93,6 +95,7 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
   objLoader.load(
     "modelInfo/Puzzle Box.obj",
     (object) => {
+      loadedObject = object;
       scene.add(object);
     },
     (xhr) => {
@@ -107,6 +110,11 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
+
+  if (loadedObject) {
+    loadedObject.rotation.y += 0.01; // Rotate the object along the Y-axis
+  }
+
   controls.update();
   renderer.render(scene, camera);
 }

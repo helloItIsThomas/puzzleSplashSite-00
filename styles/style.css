@@ -15,17 +15,13 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: lightskyblue;
+  background-color: black;
   height: 100%;
   width: 100%;
 }
 
 body {
   background: radial-gradient(#0b98d7, #7cdafb); /* Example gradient */
-  /* background-image: url("/puzzle_bg.png"); */
-  /* background-position: center; */
-  /* background-size: cover; */
-  /* background-repeat: no-repeat; */
 }
 
 a {
@@ -38,7 +34,7 @@ a:hover {
 }
 
 #sendButton:hover {
-  background-color: blue;
+  background-color: #7cdafb;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
@@ -67,7 +63,9 @@ a:hover {
   max-height: 800px;
   max-width: 600px;
   box-sizing: border-box;
-  background-color: #ffebe4;
+
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px); /* Apply a blur effect */
   border-radius: 10px;
   position: absolute;
   padding: 20px;
@@ -120,7 +118,7 @@ form {
 #closeButton:hover {
   text-decoration: none;
   cursor: pointer;
-  background-color: blue;
+  background-color: #7cdafb;
   transition: all 0.2s ease-in-out;
 }
 
@@ -175,6 +173,8 @@ form {
   padding-bottom: 10px;
   padding-left: 10px;
   border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 #formFields textarea {
@@ -186,11 +186,14 @@ form {
   font-family: "diaMed", sans-serif;
   /* margin-top: 3px; */
   /* margin-bottom: 3px; */
-  padding-top: 5px;
+  padding-top: 10px;
   padding-bottom: 5px;
   padding-left: 10px;
   border-radius: 10px;
   font-size: clamp(0.5rem, 1vw, 1rem);
+
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 #formFields button {
