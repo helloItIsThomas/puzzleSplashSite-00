@@ -3,6 +3,21 @@ import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; // Correct import
 
+function modifyTexture(texture) {
+  // Set anisotropy to the maximum supported by the device
+  texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+  // Enable mipmaps generation for better scaling
+  texture.generateMipmaps = true;
+
+  // Set texture filtering for sharpness
+  texture.minFilter = THREE.LinearMipMapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+
+  // Optional: Update the texture if needed
+  texture.needsUpdate = true;
+}
+
 // Scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -14,7 +29,10 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0.6, 0.6, 0.6);
 camera.position.set(5, 10, 20); // Zoom the camera out by adjusting the z position
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+});
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement); // Add this line
 
@@ -30,12 +48,39 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 directionalLight.position.set(0, 10, 10);
 scene.add(directionalLight);
 
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.generateMipmaps = true;
+// texture.minFilter = THREE.LinearFilter;
+// texture.magFilter = THREE.LinearFilter;
+
 scene.background = new THREE.Color(0xaaaaaa);
 
 // Loaders
 const mtlLoader = new MTLLoader();
 mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
   materials.preload();
+
+  // Loop through each material
+  for (const materialName in materials.materials) {
+    const material = materials.materials[materialName];
+
+    // Access and modify the diffuse map (color texture)
+    if (material.map) {
+      modifyTexture(material.map);
+    }
+
+    // Access and modify the bump map
+    if (material.bumpMap) {
+      modifyTexture(material.bumpMap);
+    }
+
+    // Access and modify other maps as needed (e.g., specularMap, normalMap)
+    if (material.specularMap) {
+      modifyTexture(material.specularMap);
+    }
+  }
+
   const objLoader = new OBJLoader();
   objLoader.setMaterials(materials);
   objLoader.load(
