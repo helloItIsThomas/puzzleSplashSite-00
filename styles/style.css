@@ -21,10 +21,25 @@ body {
 }
 
 body {
-  background-image: url("/puzzle_bg.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background-image: url("/puzzle_bg.png"); */
+  /* background-position: center; */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#sendButton:hover {
+  background-color: blue;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 #myCanvas {
@@ -99,6 +114,13 @@ form {
   align-items: center;
   background-color: black;
   color: white;
+}
+
+#closeButton:hover {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: blue;
+  transition: all 0.2s ease-in-out;
 }
 
 #formTop ul {
