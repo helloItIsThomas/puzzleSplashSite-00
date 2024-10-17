@@ -21,6 +21,7 @@ body {
 }
 
 body {
+  background: radial-gradient(#0b98d7, #7cdafb); /* Example gradient */
   /* background-image: url("/puzzle_bg.png"); */
   /* background-position: center; */
   /* background-size: cover; */

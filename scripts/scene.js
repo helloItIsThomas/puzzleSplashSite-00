@@ -21,16 +21,17 @@ function modifyTexture(texture) {
 // Scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-  75, // Field of view
+  25, // Field of view
   window.innerWidth / window.innerHeight, // Aspect ratio
   0.1, // Near clipping plane
   1000 // Far clipping plane
 );
-camera.position.set(0.6, 0.6, 0.6);
-camera.position.set(5, 10, 20); // Zoom the camera out by adjusting the z position
+// camera.position.set(0.6, 0.6, 0.6);
+camera.position.set(5, 10, 80); // Zoom the camera out by adjusting the z position
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
+  alpha: true,
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -41,12 +42,16 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 
 // Add lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(0, 10, 10);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+directionalLight.position.set(-0.3, 1, 1);
 scene.add(directionalLight);
+
+const blueLight = new THREE.DirectionalLight(0x7cdafb, 1);
+blueLight.position.set(0, -2, 1);
+scene.add(blueLight);
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -54,7 +59,9 @@ renderer.generateMipmaps = true;
 // texture.minFilter = THREE.LinearFilter;
 // texture.magFilter = THREE.LinearFilter;
 
-scene.background = new THREE.Color(0xaaaaaa);
+scene.background = null; // Remove the background
+
+// scene.background = new THREE.Color(0x7cdafb);
 
 // Loaders
 const mtlLoader = new MTLLoader();
