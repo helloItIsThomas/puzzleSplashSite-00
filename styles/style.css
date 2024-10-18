@@ -87,15 +87,20 @@ form {
 
 #formTop {
   box-sizing: border-box;
+  background-color: blue;
   padding: 0;
   margin: 0;
   flex-shrink: 0;
 }
 #formHeader {
-  /* background-color: red; */
-  display: flex;
+  background-color: red;
+  /* height: 100%; */
+
   opacity: 1;
+  padding: 0;
+  margin: 0;
   /* display: none; */
+  display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
@@ -111,11 +116,12 @@ form {
   box-sizing: border-box;
   /* width: clamp(20px, 2.5vw, 3.5vw); */
   width: 100%;
-  height: clamp(20px, 2.5vw, 3.5vw);
+  height: 20px;
+  /* height: clamp(20px, 2.5vw, 3.5vw); */
   flex-shrink: 0;
   /* font-size: 1vw; */
-  font-size: 2vw;
-  border-radius: 100000000px;
+  font-size: 12px;
+  /* border-radius: 100000000px; */
   padding-top: 0.25vw;
   display: flex;
   flex-direction: column;

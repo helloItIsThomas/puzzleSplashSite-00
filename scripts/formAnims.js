@@ -25,11 +25,11 @@ export function openAnim() {
     .to("#mailForm", { height: "80%", duration: 0.8 }, 0.35)
     .to("#mailForm", { minHeight: 250, paddingTop: 15, duration: 0.8 }, 0.55)
     .to("#mailForm", { padding: 10, duration: 0.5 }, 0.35)
-
     .to(
       "#closeButton",
       {
-        width: "clamp(20px, 2.5vw, 3.5vw)",
+        // width: "clamp(20px, 2.5vw, 3.5vw)",
+        width: "10%",
         borderRadius: "100%",
         duration: 0.2,
       },
