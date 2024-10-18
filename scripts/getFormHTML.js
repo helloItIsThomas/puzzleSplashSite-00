@@ -1,4 +1,4 @@
-import { checkSubmit } from "./submitAnim";
+import { listenToForm } from "./emailForm.js";
 
 fetch("/html/form.html")
   .then((response) => response.text())
@@ -9,5 +9,5 @@ fetch("/html/form.html")
     document.getElementById("myForm").appendChild(divToMove);
   })
   .then((data) => {
-    checkSubmit();
+    listenToForm();
   });

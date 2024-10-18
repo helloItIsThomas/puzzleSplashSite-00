@@ -1,22 +1,44 @@
 import emailJs from "@emailjs/browser";
+import { submitAnim } from "/scripts/formAnims.js";
+import { closeAnim } from "/scripts/formAnims.js";
 
-document.getElementById("tutorialForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  handleSubmit(e);
-});
+export function listenToForm() {
+  document.getElementById("mailForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    // handleSubmit(e);
+  });
+
+  document
+    .getElementById("formFields")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      console.log("SUBMITTED");
+      submitAnim();
+    });
+
+  document.getElementById("closeButton").addEventListener("click", () => {
+    closeAnim();
+  });
+}
+
+export function checkHandleSubmit() {
+  document.getElementById("mailForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    // handleSubmit(e);
+  });
+}
 
 function handleSubmit(e) {
   const form = {
-    FirstName: e.target.fName.value,
-    LastName: e.target.lName.value,
+    Name: e.target.name.value,
     Email: e.target.email.value,
     Message: e.target.message.value,
   };
   console.log(form);
 
   const serviceID = "string";
-  const templateID = "string";
-  const publicKey = "String";
+  const templateID = "template_96et0s4";
+  const publicKey = "HGRBfY6kZJDUteYUu";
 
   emailJs
     .send(serviceID, templateID, form, publicKey)
@@ -28,8 +50,7 @@ function handleSubmit(e) {
       if (data.status < 299) {
         console.log("SUCCESS");
 
-        e.target.fName.value = "";
-        e.target.lName.value = "";
+        e.target.name.value = "";
         e.target.email.value = "";
         e.target.message.value = "";
       }
