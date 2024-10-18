@@ -15,10 +15,10 @@ function handleComplete() {
   console.log("FormState: " + formState.isClosed);
   if (formState.isClosed) {
     console.log("X");
-    document.getElementById("closeButton").textContent = "Contact";
+    randomizeText("closeButton", "Contact", 1, 50);
   } else {
     console.log("CONTACT");
-    document.getElementById("closeButton").textContent = "X";
+    randomizeText("closeButton", "X", 1, 50);
   }
 }
 
@@ -30,18 +30,17 @@ window.addEventListener("load", () => {
       borderRadius: "0px",
       duration: 0.5,
       height: "90%",
-
       backgroundColor: "#ffebe4",
-    })
-    .to("#socialsGroup", {
-      display: "flex",
-      opacity: 1,
     })
     .to("#closeButton", {
       width: 50,
       height: 50,
       onComplete: handleComplete,
       onReverseComplete: handleComplete,
+    })
+    .to("#socialsGroup", {
+      display: "flex",
+      opacity: 1,
     });
 });
 
