@@ -3,7 +3,7 @@ import gsap from "gsap";
 let formTl;
 
 export const formState = {
-  isClosed: false,
+  isClosed: true,
 };
 
 formTl = gsap.timeline({
@@ -25,21 +25,32 @@ function handleComplete() {
 window.addEventListener("load", () => {
   randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 50);
 
-  formTl.to("#mailForm", {
-    duration: 0.5,
-    height: "10%",
-    backgroundColor: "black",
-    onComplete: handleComplete,
-    onReverseComplete: handleComplete,
-  });
+  formTl
+    .to("#mailForm", {
+      borderRadius: "0px",
+      duration: 0.5,
+      height: "90%",
+
+      backgroundColor: "#ffebe4",
+    })
+    .to("#socialsGroup", {
+      display: "flex",
+      opacity: 1,
+    })
+    .to("#closeButton", {
+      width: 50,
+      height: 50,
+      onComplete: handleComplete,
+      onReverseComplete: handleComplete,
+    });
 });
 
 export function formToggle() {
-  formState.isClosed = !formState.isClosed;
-  console.log(formState.isClosed);
-
   if (formState.isClosed) formTl.play();
   else formTl.reverse();
+
+  formState.isClosed = !formState.isClosed;
+  console.log(formState.isClosed);
 }
 
 export function randomizeText(

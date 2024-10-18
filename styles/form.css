@@ -5,15 +5,16 @@
 }
 
 #mailForm {
-  opacity: 0;
   font-size: 100%;
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 640px;
-  height: 90%;
-  background-color: #ffebe4;
+  /* width: 200px; */
+  height: 10%;
+  border-radius: 50px;
+  /* background-color: transparent; */
   box-sizing: border-box;
   position: absolute;
   padding: 20px;
@@ -35,15 +36,16 @@ form {
   flex-shrink: 0;
 }
 #formHeader {
+  position: relative;
   /* padding-bottom: 50px; */
   opacity: 1;
   padding: 0;
   margin: 0;
   /* display: none; */
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
 }
 #formBottom {
   box-sizing: border-box;
@@ -53,8 +55,10 @@ form {
 }
 
 #closeButton {
+  z-index: 1;
+  position: absolute;
   box-sizing: border-box;
-  width: 50px;
+  width: 200px;
   height: 50px;
   min-height: 20px;
   border-radius: 1000000000px;
@@ -68,6 +72,8 @@ form {
   align-items: center;
   background-color: black;
   color: white;
+  /* position: relative; */
+  left: 0px;
 }
 
 #closeButton:hover {
@@ -171,4 +177,16 @@ form {
   background-color: #7cdafb;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+}
+
+#socialsGroup {
+  z-index: 0;
+  /* padding-top: 15px; */
+  /* position: absolute; */
+  opacity: 0;
+  display: none;
+  /* position: absolute; */
+  /* display: none; */
+  /* color: blue; */
+  /* position: absolute; */
 }
