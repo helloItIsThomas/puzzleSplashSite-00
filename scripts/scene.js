@@ -51,9 +51,13 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement); // Add this line
 
-// Add controls
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
+controls.minDistance = 50;
+controls.maxDistance = 300;
+
+controls.enablePan = false;
+controls.enableDamping = true;
 
 // Add lights
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
@@ -113,7 +117,6 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
     (xhr) => {
       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
       randomizeText("closeButton", "Contact", 1, 50);
-      randomizeText("pauseButton", "PAUSE", 1, 50);
       const mailForm = document.getElementById("mailForm");
       mailForm.style.opacity = 1;
 
@@ -132,23 +135,9 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
   );
 });
 
-document.getElementById("pauseButton").addEventListener("click", () => {
-  if (globalVars.paused) {
-    document.getElementById("pauseButton").innerHTML = "PAUSE";
-  } else if (!globalVars.paused) {
-    document.getElementById("pauseButton").innerHTML = "PLAY";
-  }
-  globalVars.paused = !globalVars.paused;
-  console.log("Pause button: " + globalVars.paused);
-});
-
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
-
-  if (loadedObject && !globalVars.paused) {
-    loadedObject.rotation.y += 0.01; // Rotate the object along the Y-axis
-  }
 
   controls.update();
   renderer.render(scene, camera);

@@ -1,3 +1,1 @@
-export const globalVars = {
-  paused: false,
-};
+export const globalVars = {};
