@@ -21,7 +21,7 @@ Ni 1.0
 d 1.0
 illum 2
 map_Kd OuterGraphics.png
-bump -bm 2.0 OuterGraphicsBump.png
+bump -bm 3.0 OuterGraphicsBump.png
 
 # Material for Plane
 newmtl PlaneMaterial
