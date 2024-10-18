@@ -1,56 +1,45 @@
 import gsap from "gsap";
 
-let tl;
+let formTl;
 
 export const formState = {
-  isClosed: true,
+  isClosed: false,
 };
 
-tl = gsap.timeline({
+formTl = gsap.timeline({
   paused: true,
   defaults: { ease: "power3.out" },
 });
 
-window.addEventListener("load", () => {
-  randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 50);
-});
-
-export function openAnim() {
-  randomizeText("closeButton", "X", 1, 50);
-  randomizeText("insta", "INSTAGRAM", 1, 50);
-  randomizeText("linkedin", "LINKEDIN", 1, 50);
-  randomizeText("sendButton", "Send", 1, 50);
-
-  tl.to(["a"], { display: "block", opacity: 1, duration: 0.2 }, 0.5)
-    .to("#mailForm", { padding: 10, height: "80%", duration: 0.8 }, 0.35)
-    .to("#mailForm", { minHeight: 250, paddingTop: 15, duration: 0.8 }, 0.55)
-    .to("#mailForm", { maxHeight: 800, duration: 0.5 }, 0.35)
-    .to(
-      "#closeButton",
-      {
-        // width: "clamp(20px, 2.5vw, 3.5vw)",
-        width: "20px",
-        borderRadius: "100%",
-        duration: 0.2,
-      },
-      0.1
-    );
-
-  if (tl) {
-    tl.play();
-    formState.isClosed = false;
+function handleComplete() {
+  console.log("FormState: " + formState.isClosed);
+  if (formState.isClosed) {
+    console.log("X");
+    document.getElementById("closeButton").textContent = "Contact";
+  } else {
+    console.log("CONTACT");
+    document.getElementById("closeButton").textContent = "X";
   }
 }
 
-export function closeAnim() {
-  if (tl) {
-    tl.reverse().then(() => {
-      randomizeText("closeButton", "Contact", 1, 50);
-      formState.isClosed = true;
-    });
+window.addEventListener("load", () => {
+  randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 50);
 
-    formState.isClosed = true;
-  }
+  formTl.to("#mailForm", {
+    duration: 0.5,
+    height: "10%",
+    backgroundColor: "black",
+    onComplete: handleComplete,
+    onReverseComplete: handleComplete,
+  });
+});
+
+export function formToggle() {
+  formState.isClosed = !formState.isClosed;
+  console.log(formState.isClosed);
+
+  if (formState.isClosed) formTl.play();
+  else formTl.reverse();
 }
 
 export function randomizeText(

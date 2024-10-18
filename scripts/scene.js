@@ -116,7 +116,7 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
     },
     (xhr) => {
       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-      randomizeText("closeButton", "Contact", 1, 50);
+      // randomizeText("closeButton", "X", 1, 50);
       const mailForm = document.getElementById("mailForm");
       mailForm.style.opacity = 1;
 

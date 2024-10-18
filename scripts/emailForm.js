@@ -1,6 +1,6 @@
 import emailJs from "@emailjs/browser";
 
-import { closeAnim, openAnim, formState } from "/scripts/formAnims.js";
+import { formToggle, formState } from "/scripts/formAnims.js";
 
 export function listenToForm() {
   document.getElementById("mailForm").addEventListener("submit", (e) => {
@@ -8,20 +8,21 @@ export function listenToForm() {
     // handleSubmit(e);
   });
 
-  document
-    .getElementById("formFields")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      console.log("SUBMITTED");
-      closeAnim();
-    });
+  // document
+  // .getElementById("formFields")
+  // .addEventListener("submit", function (event) {
+  // event.preventDefault();
+  // console.log("SUBMITTED");
+  // closeAnim();
+  // });
 
   document.getElementById("closeButton").addEventListener("click", () => {
-    if (formState.isClosed) {
-      openAnim();
-    } else if (!formState.isClosed) {
-      closeAnim();
-    }
+    formToggle();
+    // if (formState.isClosed) {
+    // openAnim();
+    // } else if (!formState.isClosed) {
+    // closeAnim();
+    // }
   });
 }
 
