@@ -3,7 +3,8 @@ import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SceneUtils } from "three/examples/jsm/Addons.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; // Correct import
-import { randomizeText } from "/scripts/formAnims.js";
+import { randomizeText, animateText } from "/scripts/formAnims.js";
+import { globalVars } from "/scripts/globalVars.js";
 
 let loadedObject;
 
@@ -21,6 +22,16 @@ function modifyTexture(texture) {
   // Optional: Update the texture if needed
   texture.needsUpdate = true;
 }
+
+window.addEventListener("resize", () => {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  // Update camera aspect ratio and renderer size
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(width, height);
+});
 
 // Scene setup
 const scene = new THREE.Scene();
@@ -102,8 +113,18 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
     (xhr) => {
       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
       randomizeText("closeButton", "Contact", 1, 50);
+      randomizeText("pauseButton", "PAUSE", 1, 50);
       const mailForm = document.getElementById("mailForm");
       mailForm.style.opacity = 1;
+
+      const instaLink = document.getElementById("insta");
+      instaLink.addEventListener("mouseover", () => {
+        animateText("insta", "INSTAGRAM", 0.5, 50);
+      });
+      const linkedinLink = document.getElementById("linkedin");
+      linkedinLink.addEventListener("mouseover", () => {
+        animateText("linkedin", "LINKEDIN", 0.5, 50);
+      });
     },
     (error) => {
       console.log("An error happened");
@@ -111,11 +132,21 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
   );
 });
 
+document.getElementById("pauseButton").addEventListener("click", () => {
+  if (globalVars.paused) {
+    document.getElementById("pauseButton").innerHTML = "PAUSE";
+  } else if (!globalVars.paused) {
+    document.getElementById("pauseButton").innerHTML = "PLAY";
+  }
+  globalVars.paused = !globalVars.paused;
+  console.log("Pause button: " + globalVars.paused);
+});
+
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
 
-  if (loadedObject) {
+  if (loadedObject && !globalVars.paused) {
     loadedObject.rotation.y += 0.01; // Rotate the object along the Y-axis
   }
 
