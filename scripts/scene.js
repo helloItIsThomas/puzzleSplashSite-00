@@ -3,6 +3,7 @@ import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SceneUtils } from "three/examples/jsm/Addons.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; // Correct import
+import { randomizeText } from "/scripts/formAnims.js";
 
 let loadedObject;
 
@@ -100,6 +101,9 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
     },
     (xhr) => {
       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+      randomizeText("closeButton", "Contact", 1, 50);
+      const mailForm = document.getElementById("mailForm");
+      mailForm.style.opacity = 1;
     },
     (error) => {
       console.log("An error happened");

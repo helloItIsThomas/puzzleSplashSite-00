@@ -25,6 +25,9 @@ body {
 }
 
 a {
+  display: none;
+  opacity: 0;
+
   text-decoration: none;
   color: black;
 }
@@ -51,15 +54,16 @@ a:hover {
 }
 
 #mailForm {
+  opacity: 0;
   font-size: 100%;
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 80%;
-  width: 36%;
+  height: 1px;
+  width: 5%;
   min-width: fit-content;
-  min-height: 250px;
+  min-height: 20px;
   max-height: 800px;
   max-width: 600px;
   box-sizing: border-box;
@@ -68,8 +72,8 @@ a:hover {
   backdrop-filter: blur(10px); /* Apply a blur effect */
   border-radius: 10px;
   position: absolute;
-  padding: 20px;
-  padding-top: 15px;
+  padding: 0;
+  padding-top: 0;
   margin: 0;
   z-index: 10;
   top: 10%;
@@ -105,12 +109,13 @@ form {
 
 #closeButton {
   box-sizing: border-box;
-  width: clamp(20px, 2.5vw, 3.5vw);
+  /* width: clamp(20px, 2.5vw, 3.5vw); */
+  width: 100%;
   height: clamp(20px, 2.5vw, 3.5vw);
   flex-shrink: 0;
   /* font-size: 1vw; */
   font-size: 2vw;
-  border-radius: 100%;
+  border-radius: 100000000px;
   padding-top: 0.25vw;
   display: flex;
   flex-direction: column;

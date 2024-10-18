@@ -2,37 +2,84 @@ import gsap from "gsap";
 
 let tl;
 
-export function submitAnim() {
-  tl = gsap.timeline({
-    paused: true,
-    defaults: { ease: "power3.out" },
-  });
+export const formState = {
+  isClosed: true,
+};
 
-  tl.to(["a"], { display: "none", opacity: 0, duration: 0.2 }, 0.05) // Combine "a" animations
-    .to("#mailForm", { height: 1, duration: 0.8 }, 0.35)
-    .to("#mailForm", { minHeight: 20, paddingTop: 0, duration: 0.8 }, 0.55) // Combine minHeight and paddingTop
-    .to("#mailForm", { padding: 0, width: "5%", duration: 0.2 }, 1.1)
+tl = gsap.timeline({
+  paused: true,
+  defaults: { ease: "power3.out" },
+});
+
+window.addEventListener("load", () => {
+  randomizeText("copyright", "© STUDIO PUZZLE", 1, 50);
+});
+
+export function openAnim() {
+  randomizeText("closeButton", "X", 1, 50);
+  randomizeText("insta", "INSTAGRAM", 1, 50);
+  randomizeText("linkedin", "LINKEDIN", 1, 50);
+  randomizeText("sendButton", "Send", 1, 50);
+
+  tl.to(["a"], { display: "block", opacity: 1, duration: 0.2 }, 0.5)
+    .to("#mailForm", { height: "80%", duration: 0.8 }, 0.35)
+    .to("#mailForm", { minHeight: 250, paddingTop: 15, duration: 0.8 }, 0.55)
+    .to("#mailForm", { padding: 10, duration: 0.5 }, 0.35)
+
     .to(
       "#closeButton",
       {
-        width: "100%",
-        borderRadius: "1000000px",
+        width: "clamp(20px, 2.5vw, 3.5vw)",
+        borderRadius: "100%",
         duration: 0.2,
-        onComplete: () => {
-          document.getElementById("closeButton").innerHTML = "Contact";
-        },
       },
-      1.1
+      0.1
     );
 
-  console.log("anim start");
-  tl.play();
+  if (tl) {
+    tl.play();
+    formState.isClosed = false;
+  }
 }
 
 export function closeAnim() {
   if (tl) {
-    document.getElementById("closeButton").innerHTML = "X";
-    console.log("anim reverse");
-    tl.reverse();
+    tl.reverse().then(() => {
+      randomizeText("closeButton", "Contact", 1, 50);
+      formState.isClosed = true;
+    });
+
+    formState.isClosed = true;
   }
+}
+
+export function randomizeText(
+  elementId,
+  finalText,
+  duration = 1,
+  interval = 50
+) {
+  const element = document.getElementById(elementId);
+  const characters = "°•_-*";
+  let iterations = Math.floor((duration * 1000) / interval);
+  let currentIteration = 0;
+
+  const randomize = setInterval(() => {
+    // Generate sequential string of the same length as the final text
+    element.innerHTML = finalText
+      .split("")
+      .map((_, i) => {
+        let index = (currentIteration + i) % characters.length; // Sequentially pick characters
+        return characters[index];
+      })
+      .join("");
+
+    currentIteration++;
+
+    // When the number of iterations is complete, set the final text
+    if (currentIteration >= iterations) {
+      clearInterval(randomize);
+      element.innerHTML = finalText; // Set the final resolved text
+    }
+  }, interval);
 }
