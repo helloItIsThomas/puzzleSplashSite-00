@@ -4,8 +4,8 @@ NOTES
 It is a bit wierd having puzzle and puzzle on the bottom corner.
 Try to switch the puzzle and studio on the top and bottom. 
 
-Lets get as close to the example as possible for the contact menu.
-
 For mobile it should take over the width entirely.
 Its ok if it obscures the thing in the background a bit.
 Maybe it doesn't scale, it just has three discreet sizes. it will snap to the three screen sizes. mobile, tablet, desktop.
+
+Implement working email service
