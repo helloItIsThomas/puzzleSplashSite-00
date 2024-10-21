@@ -1,6 +1,6 @@
 
 
-– Implement working email service
+– Plug in Dom's serviceID
 — Deploy on Dom's GitHub
 
 – Swap PUZZLE and STUDIO on the outer top and bottom sides.

@@ -68,6 +68,11 @@ a:hover {
   display: none;
 }
 
+#copyright {
+  user-select: none;
+  pointer-events: none;
+}
+
 footer {
   font-family: "diaMed", sans-serif;
   position: absolute;

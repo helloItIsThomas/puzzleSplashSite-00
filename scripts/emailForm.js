@@ -44,8 +44,8 @@ function handleSubmit(e) {
   console.log(form);
 
   const serviceID = "string";
-  // const templateID = "template_96et0s4";
-  // const publicKey = "HGRBfY6kZJDUteYUu";
+  const templateID = "template_96et0s4";
+  const publicKey = "HGRBfY6kZJDUteYUu";
 
   emailJs
     .send(serviceID, templateID, form, publicKey)

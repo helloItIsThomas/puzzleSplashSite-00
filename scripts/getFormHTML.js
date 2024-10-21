@@ -12,7 +12,6 @@ fetch("/html/form.html")
   .then((data) => {
     listenToForm();
     prepareTimeline();
-    console.log("Window Loaded");
     const form = document.querySelector("#mailForm");
     form.scrollTo(0, 0);
   });
