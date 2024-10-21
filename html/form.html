@@ -17,11 +17,11 @@
     <div id="formBottom">
         <form id="formFields">
             <!-- add required tag   required   to all 3 of these-->
-            <input type='text' name='name' id='name'  placeholder="Name"></input>
+            <input type='text' name='name' id='name'  placeholder="Name" required></input>
 
-            <input type='text' name='email' id='email' placeholder="Email"></input>
+            <input type='email' name='email' id='email' placeholder="Email" required></input>
 
-            <textarea rows={5} cols={50} id='message' iname='message' placeholder="Message"></textarea>
+            <textarea rows={5} cols={50} id='message' iname='message' placeholder="Message" required></textarea>
 
             <button type='submit' id="sendButton">Send</button>
         </form>

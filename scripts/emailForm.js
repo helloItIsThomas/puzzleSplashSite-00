@@ -5,7 +5,7 @@ import { formToggle, formState } from "/scripts/formAnims.js";
 export function listenToForm() {
   document.getElementById("mailForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    // handleSubmit(e);
+    handleSubmit(e);
   });
 
   // document
@@ -35,6 +35,7 @@ export function checkHandleSubmit() {
 }
 
 function handleSubmit(e) {
+  console.log("§ SUBMITTED FORM §");
   const form = {
     Name: e.target.name.value,
     Email: e.target.email.value,
@@ -43,8 +44,8 @@ function handleSubmit(e) {
   console.log(form);
 
   const serviceID = "string";
-  const templateID = "template_96et0s4";
-  const publicKey = "HGRBfY6kZJDUteYUu";
+  // const templateID = "template_96et0s4";
+  // const publicKey = "HGRBfY6kZJDUteYUu";
 
   emailJs
     .send(serviceID, templateID, form, publicKey)

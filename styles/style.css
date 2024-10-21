@@ -42,10 +42,30 @@ a:hover {
 #mailForm {
   overflow: hidden;
   pointer-events: none;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#mailForm::-webkit-scrollbar {
+  display: none;
 }
 
 #closeButton {
+  background-color: black;
   pointer-events: all;
+}
+
+#closeButton:hover {
+  background-color: #7cdafb;
+  background-color: black;
+}
+
+#socialsGroup {
+  font-family: serif;
+  z-index: 0;
+  opacity: 0;
+  display: none;
 }
 
 footer {

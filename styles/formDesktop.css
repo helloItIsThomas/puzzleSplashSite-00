@@ -71,7 +71,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #7cdafb;
     color: white;
     /* position: relative; */
     left: 0px;
@@ -190,5 +189,11 @@
     /* display: none; */
     /* color: blue; */
     /* position: absolute; */
+  }
+
+  #insta,
+  #linkedin {
+    font-family: "diaMed", sans-serif;
+    font-size: 20px;
   }
 }
