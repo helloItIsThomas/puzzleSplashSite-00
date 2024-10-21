@@ -14,16 +14,16 @@ formTl = gsap.timeline({
 function handleComplete() {
   console.log("FormState: " + formState.isClosed);
   if (formState.isClosed) {
-    console.log("X");
-    randomizeText("closeButton", "Contact", 1, 50);
+    document.getElementById("closeButton").innerHTML = "Contact";
   } else {
-    console.log("CONTACT");
-    randomizeText("closeButton", "X", 1, 50);
+    document.getElementById("closeButton").innerHTML = "";
+    document.getElementById("closeButton").innerHTML =
+      '<img src="x.svg" alt="close icon" height="50%" width="auto" style="color:green;" />';
   }
 }
 
 window.addEventListener("load", () => {
-  randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 50);
+  randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 100);
 
   formTl
     .to("#mailForm", {

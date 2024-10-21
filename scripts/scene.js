@@ -41,7 +41,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1, // Near clipping plane
   1000 // Far clipping plane
 );
-camera.position.set(-50, 0, 80); // Zoom the camera out by adjusting the z position
+camera.position.set(0, 0, 80);
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
@@ -51,24 +51,23 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement); // Add this line
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.update();
-controls.minDistance = 50;
-controls.maxDistance = 300;
-
-controls.enablePan = false;
-controls.enableDamping = true;
+// const controls = new OrbitControls(camera, renderer.domElement);
+// controls.update();
+// controls.minDistance = 50;
+// controls.maxDistance = 300;
+// controls.enablePan = false;
+// controls.enableDamping = true;
 
 // Add lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-directionalLight.position.set(-0.3, 1, 1);
+const directionalLight = new THREE.DirectionalLight(0xf1e8e2, 2);
+directionalLight.position.set(0.4, 1, 1);
 scene.add(directionalLight);
 
-const blueLight = new THREE.DirectionalLight(0x7cdafb, 1);
-blueLight.position.set(0, -2, 1);
+const blueLight = new THREE.DirectionalLight(0x0a9ad9, 4);
+blueLight.position.set(-3.0, -2, 2);
 scene.add(blueLight);
 
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -116,18 +115,8 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
     },
     (xhr) => {
       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-      // randomizeText("closeButton", "X", 1, 50);
       const mailForm = document.getElementById("mailForm");
       mailForm.style.opacity = 1;
-
-      const instaLink = document.getElementById("insta");
-      instaLink.addEventListener("mouseover", () => {
-        animateText("insta", "INSTAGRAM", 0.5, 50);
-      });
-      const linkedinLink = document.getElementById("linkedin");
-      linkedinLink.addEventListener("mouseover", () => {
-        animateText("linkedin", "LINKEDIN", 0.5, 50);
-      });
     },
     (error) => {
       console.log("An error happened");
@@ -139,7 +128,11 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
 function animate() {
   requestAnimationFrame(animate);
 
-  controls.update();
+  if (loadedObject) {
+    // loadedObject.rotation.y += 0.0065;
+  }
+
+  // controls.update();
   renderer.render(scene, camera);
 }
 animate();
