@@ -1,11 +1,21 @@
 
 
 NOTES
-It is a bit wierd having puzzle and puzzle on the bottom corner.
-Try to switch the puzzle and studio on the top and bottom. 
-
-For mobile it should take over the width entirely.
-Its ok if it obscures the thing in the background a bit.
 Maybe it doesn't scale, it just has three discreet sizes. it will snap to the three screen sizes. mobile, tablet, desktop.
 
 Implement working email service
+
+
+UI:
+- Slow down the loading type animation
+– Remove the type animation when the form opens
+– Remove the hover animation from the links
+– Use the X icon from the figma instead of the character ‘x’.
+– SEND text should go black on rollover.
+
+Box element:
+– Swap PUZZLE and STUDIO on the outer top and bottom sides.
+– Can we slow the spin to say 65% (or something like that) of what it is.
+– RE the lighting and shading. Is there any way to get closer to what the visualiser did? He had a lovely sense of light, where even the blue was being reflected on the box.
+
+
