@@ -5,7 +5,6 @@ import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SceneUtils } from "three/examples/jsm/Addons.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; // Correct import
 import { randomizeText, animateText } from "/scripts/formAnims.js";
-import { Quaternion, Euler } from "three";
 import { toRadians } from "./utils";
 
 function modifyTexture(texture) {
@@ -110,12 +109,11 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
       scene.add(object);
     },
     (xhr) => {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
       const mailForm = document.getElementById("mailForm");
       mailForm.style.opacity = 1;
     },
     (error) => {
-      console.log("An error happened");
+      console.log("ERROR: " + error);
     }
   );
 });
@@ -125,7 +123,7 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (GV.loadedObject) {
-    GV.loadedObject.rotation.y += 0.0065;
+    GV.loadedObject.rotation.y += 0.005;
   }
 
   var friction = 0.9; // Deceleration factor

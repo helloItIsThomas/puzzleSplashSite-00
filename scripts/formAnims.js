@@ -22,9 +22,7 @@ function handleComplete() {
   }
 }
 
-window.addEventListener("load", () => {
-  randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 100);
-
+export function prepareTimeline() {
   formTl
     .to("#mailForm", {
       borderRadius: "0px",
@@ -42,6 +40,10 @@ window.addEventListener("load", () => {
       display: "flex",
       opacity: 1,
     });
+}
+
+window.addEventListener("load", () => {
+  randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 100);
 });
 
 export function formToggle() {

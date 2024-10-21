@@ -5,18 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Studio Puzzle</title>
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/formMobile.css">
-    <link rel="stylesheet" href="/styles/formTablet.css">
-    <link rel="stylesheet" href="/styles/formDesktop.css">
+    <link rel="preload" href="/styles/style.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="/styles/formMobile.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="/styles/formTablet.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="/styles/formDesktop.css" as="style" onload="this.rel='stylesheet'">
   </head>
   <body>
     <div id="myForm"></div>
-    <script type="module" src="/scripts/getFormHTML.js"></script>
-    <script type="module" src="/scripts/emailForm.js"></script>
-    <script type="module" src="/scripts/utils.js"></script>
+    <script type="module" src="/scripts/getFormHTML.js" defer></script>
+    <script type="module" src="/scripts/emailForm.js" defer></script>
+    <script type="module" src="/scripts/utils.js" defer></script>
+    <script type="module" src="/scripts/scene.js" defer></script>
     <!-- <script type="module" src="/scripts/formAnims.js"></script> -->
-    <script type="module" src="/scripts/scene.js"></script>
     <canvas id="myCanvas"></canvas>
     <footer id="copyright"></footer>
     <!--

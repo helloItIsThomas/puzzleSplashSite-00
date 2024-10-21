@@ -1,4 +1,5 @@
 import { listenToForm } from "./emailForm.js";
+import { prepareTimeline } from "/scripts/formAnims";
 
 fetch("/html/form.html")
   .then((response) => response.text())
@@ -10,4 +11,5 @@ fetch("/html/form.html")
   })
   .then((data) => {
     listenToForm();
+    prepareTimeline();
   });

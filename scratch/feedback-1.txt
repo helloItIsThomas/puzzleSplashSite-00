@@ -1,7 +1,6 @@
 
 
-– RE the lighting and shading. Is there any way to get closer to what the visualiser did? He had a lovely sense of light, where even the blue was being reflected on the box.
-– Solve issue where gsap can't find #mailForm, #closeButton, and #socialsGroup because they haven't finished loading yet.
 – Implement working email service
+— Deploy on Dom's GitHub
 
 – Swap PUZZLE and STUDIO on the outer top and bottom sides.
