@@ -1,16 +1,16 @@
 import * as THREE from "three";
+import { GV } from "/scripts/globalVars.js";
 import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SceneUtils } from "three/examples/jsm/Addons.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; // Correct import
 import { randomizeText, animateText } from "/scripts/formAnims.js";
-import { globalVars } from "/scripts/globalVars.js";
-
-let loadedObject;
+import { Quaternion, Euler } from "three";
+import { toRadians } from "./utils";
 
 function modifyTexture(texture) {
   // Set anisotropy to the maximum supported by the device
-  texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  texture.anisotropy = GV.renderer.capabilities.getMaxAnisotropy();
 
   // Enable mipmaps generation for better scaling
   texture.generateMipmaps = true;
@@ -30,7 +30,7 @@ window.addEventListener("resize", () => {
   // Update camera aspect ratio and renderer size
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
-  renderer.setSize(width, height);
+  GV.renderer.setSize(width, height);
 });
 
 // Scene setup
@@ -43,13 +43,9 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.set(0, 0, 80);
 
-const renderer = new THREE.WebGLRenderer({
-  antialias: true,
-  alpha: true,
-});
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement); // Add this line
+GV.renderer.setPixelRatio(window.devicePixelRatio);
+GV.renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(GV.renderer.domElement); // Add this line
 
 // const controls = new OrbitControls(camera, renderer.domElement);
 // controls.update();
@@ -70,9 +66,9 @@ const blueLight = new THREE.DirectionalLight(0x0a9ad9, 4);
 blueLight.position.set(-3.0, -2, 2);
 scene.add(blueLight);
 
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.generateMipmaps = true;
+GV.renderer.setSize(window.innerWidth, window.innerHeight);
+GV.renderer.outputEncoding = THREE.sRGBEncoding;
+GV.renderer.generateMipmaps = true;
 // texture.minFilter = THREE.LinearFilter;
 // texture.magFilter = THREE.LinearFilter;
 
@@ -110,7 +106,7 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
   objLoader.load(
     "modelInfo/Puzzle Box.obj",
     (object) => {
-      loadedObject = object;
+      GV.loadedObject = object;
       scene.add(object);
     },
     (xhr) => {
@@ -128,11 +124,42 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
 function animate() {
   requestAnimationFrame(animate);
 
-  if (loadedObject) {
-    // loadedObject.rotation.y += 0.0065;
+  if (GV.loadedObject) {
+    GV.loadedObject.rotation.y += 0.0065;
+  }
+
+  var friction = 0.9; // Deceleration factor
+
+  if (!GV.isDragging) {
+    // Apply friction to gradually slow down rotation
+    GV.rotationVelocity.x *= friction;
+    GV.rotationVelocity.y *= friction;
+
+    if (
+      Math.abs(GV.rotationVelocity.x) > 0.01 ||
+      Math.abs(GV.rotationVelocity.y) > 0.01
+    ) {
+      var deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
+        new THREE.Euler(
+          toRadians(GV.rotationVelocity.y),
+          toRadians(GV.rotationVelocity.x),
+          0,
+          "XYZ"
+        )
+      );
+
+      GV.loadedObject.quaternion.multiplyQuaternions(
+        deltaRotationQuaternion,
+        GV.loadedObject.quaternion
+      );
+    } else {
+      // Stop rotation when velocity is low
+      GV.rotationVelocity.x = 0;
+      GV.rotationVelocity.y = 0;
+    }
   }
 
   // controls.update();
-  renderer.render(scene, camera);
+  GV.renderer.render(scene, camera);
 }
 animate();
