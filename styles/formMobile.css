@@ -6,7 +6,7 @@
 
 #mailForm {
   font-size: 100%;
-  overflow: hidden;
+
   display: flex;
   flex-direction: column;
   /* width: 200px; */
@@ -71,7 +71,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  background-color: #7cdafb;
   color: white;
   /* position: relative; */
   left: 0px;

@@ -29,6 +29,7 @@ export function listenToForm() {
 export function checkHandleSubmit() {
   document.getElementById("mailForm").addEventListener("submit", (e) => {
     e.preventDefault();
+    console.log("§ SUBMITTED FORM §");
     // handleSubmit(e);
   });
 }

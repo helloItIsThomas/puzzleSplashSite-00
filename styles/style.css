@@ -1,4 +1,4 @@
-@font-face {
+@font-facme {
   font-family: "diaBold";
   src: url("/bold.woff") format("woff");
 }
@@ -37,6 +37,15 @@ a:hover {
 #myCanvas {
   position: absolute;
   z-index: 0;
+}
+
+#mailForm {
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#closeButton {
+  pointer-events: all;
 }
 
 footer {

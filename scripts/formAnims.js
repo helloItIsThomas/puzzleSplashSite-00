@@ -12,13 +12,21 @@ formTl = gsap.timeline({
 });
 
 function handleComplete() {
-  console.log("FormState: " + formState.isClosed);
   if (formState.isClosed) {
     document.getElementById("closeButton").innerHTML = "Contact";
+
+    gsap.to("#mailForm", { pointerEvents: "none" });
+    gsap.to("#closeButton", { pointerEvents: "all" });
+
+    gsap.to("#mailForm", { scrollTop: 0, duration: 0.5 });
+    gsap.set("#mailForm", { overflow: "hidden" });
   } else {
     document.getElementById("closeButton").innerHTML = "";
     document.getElementById("closeButton").innerHTML =
       '<img src="x.svg" alt="close icon" height="50%" width="auto" style="color:green;" />';
+
+    gsap.to("#mailForm", { pointerEvents: "all" });
+    gsap.set("#mailForm", { overflow: "scroll" });
   }
 }
 
@@ -51,7 +59,6 @@ export function formToggle() {
   else formTl.reverse();
 
   formState.isClosed = !formState.isClosed;
-  console.log(formState.isClosed);
 }
 
 export function randomizeText(
