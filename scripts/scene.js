@@ -75,7 +75,7 @@ blueLight.position.set(-3.0, -2, 2);
 scene.add(blueLight);
 
 GV.renderer.setSize(window.innerWidth, window.innerHeight);
-GV.renderer.outputEncoding = THREE.sRGBEncoding;
+// GV.renderer.outputEncoding = THREE.sRGBEncoding;
 GV.renderer.generateMipmaps = true;
 
 scene.background = null; // Remove the background
