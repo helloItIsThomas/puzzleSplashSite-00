@@ -1,3 +1,48 @@
+@font-face {
+  font-family: "diaBold";
+  src: url("/bold.woff") format("woff");
+}
+@font-face {
+  font-family: "diaMed";
+  src: url("/med.woff") format("woff");
+}
+
+* {
+  font-family: "diaBold", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: radial-gradient(#0b98d7, #7cdafb); /* Example gradient */
+}
+
+a {
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#myCanvas {
+  position: absolute;
+  z-index: 0;
+}
+
+#mailForm::-webkit-scrollbar {
+  display: none;
+}
+
 #mailForm * {
   box-sizing: border-box;
   padding: 0;
@@ -5,23 +50,30 @@
 }
 
 #mailForm {
-  font-size: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 
+  font-size: 100%;
   display: flex;
   flex-direction: column;
   /* width: 200px; */
   height: 10%;
   min-height: 80px;
   border-radius: 50px;
-  background-color: transparent;
   position: absolute;
   padding: 20px;
   z-index: 10;
-  width: calc(100% - 40px); /* Subtracts 40px from total width for margin */
-  margin: 20px;
+  width: 100%;
+  /* width: calc(100% - 40px); */
+  /* margin: 20px; */
   box-sizing: border-box;
   /* top: 20px; */
   /* left: 20px; */
+
+  background-color: transparent;
+  /* background-color: red; */
 }
 
 form {
@@ -30,7 +82,6 @@ form {
 }
 
 #formTop {
-  /* background-color: red; */
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -42,7 +93,6 @@ form {
   opacity: 1;
   padding: 0;
   margin: 0;
-  /* display: none; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,15 +106,15 @@ form {
 }
 
 #closeButton {
+  pointer-events: all;
   z-index: 1;
-  /* position: absolute; */
   box-sizing: border-box;
   width: 200px;
   height: 50px;
   min-height: 20px;
   border-radius: 1000000000px;
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: 15px;
   padding-top: 0.25vw;
   margin: 0;
   display: flex;
@@ -72,8 +122,9 @@ form {
   justify-content: center;
   align-items: center;
   color: white;
-  /* position: relative; */
-  left: 0px;
+  position: relative;
+  left: 40px;
+  background-color: black;
 }
 
 #closeButton:hover {
@@ -94,7 +145,7 @@ form {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  gap: 30px;
+  gap: 20px;
   justify-content: flex-end;
 }
 
@@ -183,19 +234,27 @@ form {
 }
 
 #socialsGroup {
+  font-family: serif;
   z-index: 0;
-  /* padding-top: 15px; */
-  /* position: absolute; */
   opacity: 0;
   display: none;
-  /* position: absolute; */
-  /* display: none; */
-  /* color: blue; */
-  /* position: absolute; */
+}
+
+#copyright {
+  user-select: none;
+  pointer-events: none;
+}
+
+footer {
+  font-family: "diaMed", sans-serif;
+  position: absolute;
+  z-index: 0;
+  bottom: 10px;
+  left: 20px;
 }
 
 #insta,
 #linkedin {
   font-family: "diaMed", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }

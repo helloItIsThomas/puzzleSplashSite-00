@@ -31,22 +31,28 @@ function handleComplete() {
 }
 
 export function prepareTimeline() {
+  const isMobile = window.innerWidth <= 600;
+  console.log(isMobile);
+
   formTl
-    .to("#mailForm", {
-      borderRadius: "0px",
-      duration: 0.5,
-      height: "90%",
-      backgroundColor: "#ffebe4",
-    })
     .to("#closeButton", {
       width: 50,
       height: 50,
+      left: 0,
       onComplete: handleComplete,
       onReverseComplete: handleComplete,
     })
     .to("#socialsGroup", {
       display: "flex",
       opacity: 1,
+    })
+    .to("#mailForm", {
+      width: isMobile ? "calc(100% - 40px)" : "600px",
+      margin: "20px",
+      borderRadius: "0px",
+      duration: 0.5,
+      height: "90%",
+      backgroundColor: "#ffebe4",
     });
 }
 
