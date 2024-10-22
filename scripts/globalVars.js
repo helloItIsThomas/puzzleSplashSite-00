@@ -1,7 +1,7 @@
-import * as THREE from "three";
+import { WebGLRenderer } from "three";
 
 export const GV = {
-  renderer: new THREE.WebGLRenderer({
+  renderer: new WebGLRenderer({
     antialias: true,
     alpha: true,
   }),

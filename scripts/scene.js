@@ -1,11 +1,20 @@
-import * as THREE from "three";
 import { GV } from "/scripts/globalVars.js";
 import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SceneUtils } from "three/examples/jsm/Addons.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"; // Correct import
-import { randomizeText, animateText } from "/scripts/formAnims.js";
 import { toRadians } from "./utils";
+import * as THREE from "three";
+
+import {
+  LinearFilter,
+  LinearMipMapLinearFilter,
+  Scene,
+  PerspectiveCamera,
+  AmbientLight,
+  DirectionalLight,
+  Quaternion,
+  Euler,
+} from "three";
 
 function modifyTexture(texture) {
   // Set anisotropy to the maximum supported by the device
@@ -15,8 +24,8 @@ function modifyTexture(texture) {
   texture.generateMipmaps = true;
 
   // Set texture filtering for sharpness
-  texture.minFilter = THREE.LinearMipMapLinearFilter;
-  texture.magFilter = THREE.LinearFilter;
+  texture.minFilter = LinearMipMapLinearFilter;
+  texture.magFilter = LinearFilter;
 
   // Optional: Update the texture if needed
   texture.needsUpdate = true;
@@ -33,8 +42,8 @@ window.addEventListener("resize", () => {
 });
 
 // Scene setup
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
+const scene = new Scene();
+const camera = new PerspectiveCamera(
   25, // Field of view
   window.innerWidth / window.innerHeight, // Aspect ratio
   0.1, // Near clipping plane
@@ -54,26 +63,22 @@ document.body.appendChild(GV.renderer.domElement); // Add this line
 // controls.enableDamping = true;
 
 // Add lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+const ambientLight = new AmbientLight(0xffffff, 1.0);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xf1e8e2, 2);
+const directionalLight = new DirectionalLight(0xf1e8e2, 2);
 directionalLight.position.set(0.4, 1, 1);
 scene.add(directionalLight);
 
-const blueLight = new THREE.DirectionalLight(0x0a9ad9, 4);
+const blueLight = new DirectionalLight(0x0a9ad9, 4);
 blueLight.position.set(-3.0, -2, 2);
 scene.add(blueLight);
 
 GV.renderer.setSize(window.innerWidth, window.innerHeight);
 GV.renderer.outputEncoding = THREE.sRGBEncoding;
 GV.renderer.generateMipmaps = true;
-// texture.minFilter = THREE.LinearFilter;
-// texture.magFilter = THREE.LinearFilter;
 
 scene.background = null; // Remove the background
-
-// scene.background = new THREE.Color(0x7cdafb);
 
 // Loaders
 const mtlLoader = new MTLLoader();
@@ -137,8 +142,8 @@ function animate() {
       Math.abs(GV.rotationVelocity.x) > 0.01 ||
       Math.abs(GV.rotationVelocity.y) > 0.01
     ) {
-      var deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(
-        new THREE.Euler(
+      var deltaRotationQuaternion = new Quaternion().setFromEuler(
+        new Euler(
           toRadians(GV.rotationVelocity.y),
           toRadians(GV.rotationVelocity.x),
           0,
