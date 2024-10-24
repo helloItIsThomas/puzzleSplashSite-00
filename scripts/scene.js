@@ -55,13 +55,6 @@ GV.renderer.setPixelRatio(window.devicePixelRatio);
 GV.renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(GV.renderer.domElement); // Add this line
 
-// const controls = new OrbitControls(camera, renderer.domElement);
-// controls.update();
-// controls.minDistance = 50;
-// controls.maxDistance = 300;
-// controls.enablePan = false;
-// controls.enableDamping = true;
-
 // Add lights
 const ambientLight = new AmbientLight(0xffffff, 1.0);
 scene.add(ambientLight);

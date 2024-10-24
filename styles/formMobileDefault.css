@@ -231,6 +231,7 @@ form {
 }
 
 #copyright {
+  font-size: 12px;
   user-select: none;
   pointer-events: none;
 }

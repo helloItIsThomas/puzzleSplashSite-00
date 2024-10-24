@@ -19,3 +19,25 @@ GV.renderer.domElement.addEventListener("mouseup", function () {
 GV.renderer.domElement.addEventListener("mouseleave", function () {
   GV.isDragging = false;
 });
+
+// Add touch event listeners
+GV.renderer.domElement.addEventListener("touchstart", function (e) {
+  e.preventDefault(); // Prevent default scrolling
+  GV.isDragging = true;
+  const touch = e.touches[0];
+  GV.previousMousePosition = { x: touch.pageX, y: touch.pageY };
+});
+
+GV.renderer.domElement.addEventListener("touchmove", function (e) {
+  e.preventDefault(); // Prevent default scrolling
+  const touch = e.touches[0];
+  const touchEvent = {
+    offsetX: touch.pageX,
+    offsetY: touch.pageY,
+  };
+  handleRotation(touchEvent);
+});
+
+GV.renderer.domElement.addEventListener("touchend", function () {
+  GV.isDragging = false;
+});
