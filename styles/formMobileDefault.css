@@ -50,28 +50,23 @@ a:hover {
 }
 
 #mailForm {
-  overflow: hidden;
+  box-sizing: border-box;
   pointer-events: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
-  font-size: 100%;
+  z-index: 10;
+  overflow: hidden;
+  position: absolute;
   display: flex;
   flex-direction: column;
-  /* width: 200px; */
-  height: 10%;
+  font-size: 100%;
+
   min-height: 80px;
   border-radius: 50px;
-  position: absolute;
   padding: 20px;
-  z-index: 10;
+  height: 10%;
   width: 100%;
-  /* width: calc(100% - 40px); */
-  /* margin: 20px; */
-  box-sizing: border-box;
-  /* top: 20px; */
-  /* left: 20px; */
-
   background-color: transparent;
   /* background-color: red; */
 }
