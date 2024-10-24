@@ -128,13 +128,16 @@ function animate() {
   requestAnimationFrame(animate);
 
   if (GV.loadedObject) {
-    GV.loadedObject.rotation.y += 0.005;
+    if (!GV.isDragging) {
+      GV.loadedObject.rotation.y += 0.005;
+    } else {
+      GV.loadedObject.rotation.y *= 0.95;
+    }
   }
 
   var friction = 0.9; // Deceleration factor
 
   if (!GV.isDragging) {
-    // Apply friction to gradually slow down rotation
     GV.rotationVelocity.x *= friction;
     GV.rotationVelocity.y *= friction;
 

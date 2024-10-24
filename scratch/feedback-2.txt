@@ -1,0 +1,19 @@
+BOX:
+– I can’t quite tell, but are you missing the texture on the box? There is a subtle paper texture,
+which looks like it might have dropped off? 
+
+MOBILE:
+– Copyright text could be smaller.
+– There is no interactivity on mobile...it just spins?
+– CONTACT button is getting cropped off in the corner?
+– Can we shorten the form slightly? Mines getting cropped off, and has a weird tiny bit of scroll
+on it. Would be great to remove that.
+– Contact button looks bigger than it should be, can it match SEND button
+– button transitions aren’t as successful on mobile, I guess to do with the spacing and
+positioning of the X button and the edge of the box.
+
+
+– [DESKTOP] Apologies, the form/button sizing is pretty large isn’t it! I feel like everything needs to be about
+65-70% smaller. E.g. the width of the form, the size of all the buttons and text and text fields etc.
+I’ve judged that by simply zooming out in my browser (screen shot attached).
+– Swapping STUDIO and PUZZLE on the edges?

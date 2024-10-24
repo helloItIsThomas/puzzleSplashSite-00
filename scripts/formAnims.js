@@ -8,7 +8,7 @@ export const formState = {
 
 formTl = gsap.timeline({
   paused: true,
-  defaults: { ease: "power3.out" },
+  defaults: { ease: "power3.inOut", duration: 0.1 },
 });
 
 function handleComplete() {
@@ -58,6 +58,7 @@ export function prepareTimeline() {
 
 window.addEventListener("load", () => {
   randomizeText("copyright", "© STUDIO PUZZLE 2024", 1, 100);
+  randomizeText("closeButton", "Contact", 1, 100);
 });
 
 export function formToggle() {

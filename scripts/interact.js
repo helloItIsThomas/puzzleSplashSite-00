@@ -34,3 +34,31 @@ export function handleRotation(e) {
     };
   }
 }
+
+export function handleZoom(e) {
+  const zoomFactor = 0.1;
+  const delta = e.deltaY > 0 ? -zoomFactor : zoomFactor;
+  const maxScale = 4.0; // Define a maximum scale value
+
+  // Adjust the scale of the loaded object
+  GV.loadedObject.scale.x += delta;
+  GV.loadedObject.scale.y += delta;
+  GV.loadedObject.scale.z += delta;
+
+  // Ensure the scale doesn't go below a minimum value or above a maximum value
+  GV.loadedObject.scale.x = Math.max(
+    0.1,
+    Math.min(maxScale, GV.loadedObject.scale.x)
+  );
+  GV.loadedObject.scale.y = Math.max(
+    0.1,
+    Math.min(maxScale, GV.loadedObject.scale.y)
+  );
+  GV.loadedObject.scale.z = Math.max(
+    0.1,
+    Math.min(maxScale, GV.loadedObject.scale.z)
+  );
+}
+
+// Add event listener for mouse wheel
+window.addEventListener("wheel", handleZoom);
