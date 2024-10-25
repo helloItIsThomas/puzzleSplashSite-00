@@ -19,9 +19,6 @@ export function prepareTimeline() {
   console.log("running prepare timeline");
   const isMobile = window.innerWidth <= 600;
 
-  // formTl.clear();
-  // formCloseTl.clear();
-
   formTl
     .to("#closeButton", {
       width: 50,
@@ -93,10 +90,9 @@ window.addEventListener("load", () => {
 
 export function formToggle() {
   if (formState.isClosed) {
-    formTl.play();
+    formTl.restart();
   } else {
-    formCloseTl.play();
-    console.log("formCloseTl played");
+    formCloseTl.restart();
   }
 
   formState.isClosed = !formState.isClosed;

@@ -34,7 +34,6 @@ function modifyTexture(texture) {
 
 window.addEventListener("resize", () => {
   console.log("resizing");
-  // prepareTimeline();
   const width = window.innerWidth;
   const height = window.innerHeight;
 
