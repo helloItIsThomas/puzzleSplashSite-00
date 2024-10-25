@@ -1,12 +1,8 @@
 
 MOBILE:
-– CONTACT button is getting cropped off in the corner?
-– Can we shorten the form slightly? Mines getting cropped off, and has a weird tiny bit of scroll on it. Would be great to remove that.
-– Contact button looks bigger than it should be, can it match SEND button
-– button transitions aren’t as successful on mobile, I guess to do with the spacing and
-positioning of the X button and the edge of the box.
+– button transitions aren’t as successful on mobile, I guess to do with the spacing and positioning of the X button and the edge of the box.
 
-Figure out how to get rid of the purple thing in the background that shows up on mobile sometimes.po
+Figure out how to get rid of the purple thing in the background that shows up on mobile sometimes.
 
 
 – [DESKTOP] Apologies, the form/button sizing is pretty large isn’t it! I feel like everything needs to be about

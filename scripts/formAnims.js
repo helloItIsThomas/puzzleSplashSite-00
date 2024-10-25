@@ -23,7 +23,6 @@ export function prepareTimeline() {
   formTl
     .to("#closeButton", {
       width: 50,
-      height: 50,
       left: 0,
       onComplete: handleComplete,
     })
@@ -35,8 +34,8 @@ export function prepareTimeline() {
       width: 1,
     })
     .to("#mailForm", {
-      height: "90%",
       margin: "20px",
+      height: "calc(100% - 60px)",
       backgroundColor: "#ffebe4",
       duration: 0.5,
       onComplete: () => {
@@ -47,7 +46,6 @@ export function prepareTimeline() {
   formCloseTl
     .to("#closeButton", {
       width: "200px",
-      height: "50px",
       left: "0px",
       onComplete: handleComplete,
     })
@@ -59,8 +57,8 @@ export function prepareTimeline() {
       width: 0.1,
     })
     .to("#mailForm", {
-      height: "10%",
       margin: 0,
+      height: "10%",
       backgroundColor: "transparent",
       duration: 0.5,
       onComplete: () => {
