@@ -5,6 +5,7 @@ import { SceneUtils } from "three/examples/jsm/Addons.js";
 import { prepareTimeline } from "/scripts/formAnims.js";
 import { toRadians } from "./utils";
 import * as THREE from "three";
+import { formState } from "./formAnims";
 
 import {
   LinearFilter,
@@ -33,7 +34,6 @@ function modifyTexture(texture) {
 }
 
 window.addEventListener("resize", () => {
-  console.log("resizing");
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -41,7 +41,23 @@ window.addEventListener("resize", () => {
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   GV.renderer.setSize(width, height);
+
+  setMailFormW();
 });
+
+export function setMailFormW() {
+  const isMobile = window.innerWidth <= 600;
+
+  const mailForm = document.getElementById("mailForm");
+  if (formState.isClosed) {
+    mailForm.style.width = "100%";
+    console.log("sizing for a closed form");
+  } else {
+    if (isMobile) mailForm.style.width = `calc(100% - 40px)`;
+    else mailForm.style.width = "600px";
+    console.log("sizing for an open form");
+  }
+}
 
 // Scene setup
 const scene = new Scene();

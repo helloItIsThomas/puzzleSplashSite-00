@@ -1,9 +1,11 @@
 import gsap from "gsap";
+import { setMailFormW } from "./scene.js";
 
 let formTl, formCloseTl;
 
 export const formState = {
   isClosed: true,
+  width: 1.1,
 };
 
 formTl = gsap.timeline({
@@ -17,7 +19,6 @@ formCloseTl = gsap.timeline({
 
 export function prepareTimeline() {
   console.log("running prepare timeline");
-  const isMobile = window.innerWidth <= 600;
 
   formTl
     .to("#closeButton", {
@@ -30,11 +31,12 @@ export function prepareTimeline() {
       display: "flex",
       opacity: 1,
     })
+    .to(formState, {
+      width: 1,
+    })
     .to("#mailForm", {
-      width: isMobile ? "calc(100% - 40px)" : "600px",
       height: "90%",
       margin: "20px",
-      borderRadius: "0px",
       backgroundColor: "#ffebe4",
       duration: 0.5,
       onComplete: () => {
@@ -46,19 +48,19 @@ export function prepareTimeline() {
     .to("#closeButton", {
       width: "200px",
       height: "50px",
-      left: "40px",
+      left: "0px",
       onComplete: handleComplete,
     })
     .to("#socialsGroup", {
       display: "none",
       opacity: 0,
     })
+    .to(formState, {
+      width: 0.1,
+    })
     .to("#mailForm", {
-      // width: isMobile ? "100%" : "600px",
-      width: "100%",
       height: "10%",
       margin: 0,
-      borderRadius: "50px",
       backgroundColor: "transparent",
       duration: 0.5,
       onComplete: () => {
@@ -90,12 +92,13 @@ window.addEventListener("load", () => {
 
 export function formToggle() {
   if (formState.isClosed) {
+    formState.isClosed = !formState.isClosed;
+    setMailFormW();
     formTl.restart();
   } else {
+    formState.isClosed = !formState.isClosed;
     formCloseTl.restart();
   }
-
-  formState.isClosed = !formState.isClosed;
 }
 
 export function randomizeText(
