@@ -49,7 +49,14 @@ a:hover {
   margin: 0;
 }
 
+/* CLOSE HERE YO */
 #mailForm {
+  width: 100%;
+  height: 10%;
+  margin: 0;
+  border-radius: 50px;
+  background-color: transparent;
+
   box-sizing: border-box;
   pointer-events: none;
   -ms-overflow-style: none;
@@ -63,11 +70,7 @@ a:hover {
   font-size: 100%;
 
   min-height: 80px;
-  border-radius: 50px;
   padding: 20px;
-  height: 10%;
-  width: 100%;
-  background-color: transparent;
   /* background-color: red; */
 }
 
@@ -89,7 +92,7 @@ form {
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   flex-direction: row;
 }
@@ -100,21 +103,22 @@ form {
   margin: 0;
 }
 
+/* CLOSE HERE YO */
 #closeButton {
+  width: 200px;
+  height: 50px;
+  left: 40px;
+
+  border-radius: 1000000000px;
   pointer-events: all;
   z-index: 1;
   box-sizing: border-box;
-  width: 200px;
-  /* min-height: 20px; */
-  height: 50px;
   font-size: 22px;
   box-sizing: border-box;
   border: none;
   margin-top: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
-  left: 40px;
-  border-radius: 1000000000px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -226,11 +230,13 @@ form {
   transition: all 0.2s ease-in-out;
 }
 
+/* CLOSE HERE YO */
 #socialsGroup {
+  display: none;
+  opacity: 0;
+
   font-family: serif;
   z-index: 0;
-  opacity: 0;
-  display: none;
 }
 
 #copyright {

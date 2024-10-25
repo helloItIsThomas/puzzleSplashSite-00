@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-let formTl;
+let formTl, formCloseTl;
 
 export const formState = {
   isClosed: true,
@@ -10,13 +10,17 @@ formTl = gsap.timeline({
   paused: true,
   defaults: { ease: "power3.inOut", duration: 0.1 },
 });
+formCloseTl = gsap.timeline({
+  paused: true,
+  defaults: { ease: "power3.inOut", duration: 0.1 },
+});
 
 export function prepareTimeline() {
   console.log("running prepare timeline");
   const isMobile = window.innerWidth <= 600;
-  console.log(isMobile);
 
-  formTl.clear();
+  // formTl.clear();
+  // formCloseTl.clear();
 
   formTl
     .to("#closeButton", {
@@ -24,7 +28,6 @@ export function prepareTimeline() {
       height: 50,
       left: 0,
       onComplete: handleComplete,
-      onReverseComplete: handleComplete,
     })
     .to("#socialsGroup", {
       display: "flex",
@@ -32,11 +35,38 @@ export function prepareTimeline() {
     })
     .to("#mailForm", {
       width: isMobile ? "calc(100% - 40px)" : "600px",
+      height: "90%",
       margin: "20px",
       borderRadius: "0px",
-      duration: 0.5,
-      height: "90%",
       backgroundColor: "#ffebe4",
+      duration: 0.5,
+      onComplete: () => {
+        console.log("formTl played");
+      },
+    });
+
+  formCloseTl
+    .to("#closeButton", {
+      width: "200px",
+      height: "50px",
+      left: "40px",
+      onComplete: handleComplete,
+    })
+    .to("#socialsGroup", {
+      display: "none",
+      opacity: 0,
+    })
+    .to("#mailForm", {
+      // width: isMobile ? "100%" : "600px",
+      width: "100%",
+      height: "10%",
+      margin: 0,
+      borderRadius: "50px",
+      backgroundColor: "transparent",
+      duration: 0.5,
+      onComplete: () => {
+        console.log("formCloseTl played");
+      },
     });
 
   function handleComplete() {
@@ -62,8 +92,12 @@ window.addEventListener("load", () => {
 });
 
 export function formToggle() {
-  if (formState.isClosed) formTl.play();
-  else formTl.reverse();
+  if (formState.isClosed) {
+    formTl.play();
+  } else {
+    formCloseTl.play();
+    console.log("formCloseTl played");
+  }
 
   formState.isClosed = !formState.isClosed;
 }
