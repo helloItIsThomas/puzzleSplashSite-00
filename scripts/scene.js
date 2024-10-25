@@ -2,6 +2,7 @@ import { GV } from "/scripts/globalVars.js";
 import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SceneUtils } from "three/examples/jsm/Addons.js";
+import { prepareTimeline } from "/scripts/formAnims.js";
 import { toRadians } from "./utils";
 import * as THREE from "three";
 
@@ -32,6 +33,8 @@ function modifyTexture(texture) {
 }
 
 window.addEventListener("resize", () => {
+  console.log("resizing");
+  prepareTimeline();
   const width = window.innerWidth;
   const height = window.innerHeight;
 

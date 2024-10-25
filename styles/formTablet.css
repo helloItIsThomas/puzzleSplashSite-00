@@ -1,8 +1,4 @@
 @media (min-width: 768px) {
-  #closeButton {
-    position: relative;
-    left: 40px;
-  }
   #copyright {
     font-size: 16px;
   }

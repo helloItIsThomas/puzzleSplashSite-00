@@ -1,5 +1,5 @@
 import { GV } from "/scripts/globalVars";
-import { handleRotation } from "/scripts/interact";
+import { handleRotation, handlePinchZoom } from "/scripts/interact";
 
 export const toRadians = (degrees) => degrees * (Math.PI / 180);
 
@@ -23,19 +23,27 @@ GV.renderer.domElement.addEventListener("mouseleave", function () {
 // Add touch event listeners
 GV.renderer.domElement.addEventListener("touchstart", function (e) {
   e.preventDefault(); // Prevent default scrolling
-  GV.isDragging = true;
-  const touch = e.touches[0];
-  GV.previousMousePosition = { x: touch.pageX, y: touch.pageY };
+  if (e.touches.length === 1) {
+    GV.isDragging = true;
+    const touch = e.touches[0];
+    GV.previousMousePosition = { x: touch.pageX, y: touch.pageY };
+  } else if (e.touches.length === 2) {
+    handlePinchZoom.start(e);
+  }
 });
 
 GV.renderer.domElement.addEventListener("touchmove", function (e) {
   e.preventDefault(); // Prevent default scrolling
-  const touch = e.touches[0];
-  const touchEvent = {
-    offsetX: touch.pageX,
-    offsetY: touch.pageY,
-  };
-  handleRotation(touchEvent);
+  if (e.touches.length === 1) {
+    const touch = e.touches[0];
+    const touchEvent = {
+      offsetX: touch.pageX,
+      offsetY: touch.pageY,
+    };
+    handleRotation(touchEvent);
+  } else if (e.touches.length === 2) {
+    handlePinchZoom.move(e);
+  }
 });
 
 GV.renderer.domElement.addEventListener("touchend", function () {

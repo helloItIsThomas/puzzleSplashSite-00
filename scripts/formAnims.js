@@ -11,28 +11,12 @@ formTl = gsap.timeline({
   defaults: { ease: "power3.inOut", duration: 0.1 },
 });
 
-function handleComplete() {
-  if (formState.isClosed) {
-    document.getElementById("closeButton").innerHTML = "Contact";
-
-    gsap.to("#mailForm", { pointerEvents: "none" });
-    gsap.to("#closeButton", { pointerEvents: "all" });
-
-    gsap.to("#mailForm", { scrollTop: 0, duration: 0.5 });
-    gsap.set("#mailForm", { overflow: "hidden" });
-  } else {
-    document.getElementById("closeButton").innerHTML = "";
-    document.getElementById("closeButton").innerHTML =
-      '<img src="x.svg" alt="close icon" height="50%" width="auto" style="color:green;" />';
-
-    gsap.to("#mailForm", { pointerEvents: "all" });
-    gsap.set("#mailForm", { overflow: "scroll" });
-  }
-}
-
 export function prepareTimeline() {
+  console.log("running prepare timeline");
   const isMobile = window.innerWidth <= 600;
   console.log(isMobile);
+
+  formTl.clear();
 
   formTl
     .to("#closeButton", {
@@ -54,6 +38,22 @@ export function prepareTimeline() {
       height: "90%",
       backgroundColor: "#ffebe4",
     });
+
+  function handleComplete() {
+    const closeButton = document.getElementById("closeButton");
+    if (formState.isClosed) {
+      closeButton.innerHTML = "Contact";
+      gsap.set("#mailForm", { pointerEvents: "none" });
+      gsap.set("#closeButton", { pointerEvents: "all" });
+      gsap.to("#mailForm", { scrollTop: 0, duration: 0.5 });
+      gsap.set("#mailForm", { overflow: "hidden" });
+    } else {
+      closeButton.innerHTML =
+        '<img src="x.svg" alt="close icon" height="50%" width="auto" style="color:green;" />';
+      gsap.set("#mailForm", { pointerEvents: "all" });
+      gsap.set("#mailForm", { overflow: "scroll" });
+    }
+  }
 }
 
 window.addEventListener("load", () => {

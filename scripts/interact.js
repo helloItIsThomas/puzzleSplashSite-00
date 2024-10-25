@@ -62,3 +62,48 @@ export function handleZoom(e) {
 
 // Add event listener for mouse wheel
 window.addEventListener("wheel", handleZoom);
+
+// Handle pinch zoom
+export const handlePinchZoom = {
+  initialDistance: null,
+
+  start(e) {
+    const [touch1, touch2] = e.touches;
+    this.initialDistance = Math.hypot(
+      touch2.pageX - touch1.pageX,
+      touch2.pageY - touch1.pageY
+    );
+  },
+
+  move(e) {
+    const [touch1, touch2] = e.touches;
+    const currentDistance = Math.hypot(
+      touch2.pageX - touch1.pageX,
+      touch2.pageY - touch1.pageY
+    );
+
+    if (this.initialDistance) {
+      const zoomFactor = (currentDistance - this.initialDistance) * 0.01;
+      const maxScale = 4.0;
+
+      GV.loadedObject.scale.x += zoomFactor;
+      GV.loadedObject.scale.y += zoomFactor;
+      GV.loadedObject.scale.z += zoomFactor;
+
+      GV.loadedObject.scale.x = Math.max(
+        0.1,
+        Math.min(maxScale, GV.loadedObject.scale.x)
+      );
+      GV.loadedObject.scale.y = Math.max(
+        0.1,
+        Math.min(maxScale, GV.loadedObject.scale.y)
+      );
+      GV.loadedObject.scale.z = Math.max(
+        0.1,
+        Math.min(maxScale, GV.loadedObject.scale.z)
+      );
+
+      this.initialDistance = currentDistance;
+    }
+  },
+};
