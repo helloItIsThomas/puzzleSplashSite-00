@@ -110,6 +110,9 @@ export function randomizeText(
   let iterations = Math.floor((duration * 1000) / interval);
   let currentIteration = 0;
 
+  // Disable user interaction
+  element.style.pointerEvents = "none";
+
   const randomize = setInterval(() => {
     // Generate sequential string of the same length as the final text
     element.innerHTML = finalText
@@ -126,6 +129,8 @@ export function randomizeText(
     if (currentIteration >= iterations) {
       clearInterval(randomize);
       element.innerHTML = finalText; // Set the final resolved text
+      // Re-enable user interaction
+      element.style.pointerEvents = "auto";
     }
   }, interval);
 }
