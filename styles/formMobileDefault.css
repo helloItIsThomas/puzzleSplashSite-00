@@ -158,9 +158,11 @@ form {
 }
 
 #formHeadline {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: clamp(25px, 6vh, 50px);
+  padding-bottom: clamp(25px, 6vh, 50px);
   font-size: 45px;
+  font-size: clamp(25px, 6vh, 45px);
+  /* font-size: clamp(25px, 6vh, 45px); */
   text-align: center;
   font-family: "diaBold", sans-serif;
 }
