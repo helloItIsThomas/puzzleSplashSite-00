@@ -1,10 +1,7 @@
 import { GV } from "/scripts/globalVars.js";
 import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
-import { SceneUtils } from "three/examples/jsm/Addons.js";
-import { prepareTimeline } from "/scripts/formAnims.js";
 import { toRadians } from "./utils";
-import * as THREE from "three";
 import { formState } from "./formAnims";
 
 import {
@@ -48,12 +45,15 @@ window.addEventListener("resize", () => {
 export function setMailFormW() {
   const isMobile = window.innerWidth <= 600;
 
+  console.log(formState);
+
   const mailForm = document.getElementById("mailForm");
   if (formState.isClosed) {
     mailForm.style.width = "100%";
     console.log("sizing for a closed form");
   } else {
-    if (isMobile) mailForm.style.width = `calc(100% - 40px)`;
+    // if (isMobile) mailForm.style.width = `calc(100% - 40px)`;
+    if (isMobile) mailForm.style.width = `100%`;
     else mailForm.style.width = "600px";
     console.log("sizing for an open form");
   }
@@ -137,6 +137,9 @@ mtlLoader.load("modelInfo/Puzzle_Box.mtl", (materials) => {
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
+
+  // if (formState)
+  // document.getElementById("mailForm").style.height = formState.height * 100;
 
   if (GV.loadedObject) {
     if (!GV.isDragging) {

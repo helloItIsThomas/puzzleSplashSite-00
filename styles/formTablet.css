@@ -1,4 +1,8 @@
 @media (min-width: 768px) {
+  #mailForm {
+    margin: 20px;
+  }
+
   #copyright {
     font-size: 16px;
   }

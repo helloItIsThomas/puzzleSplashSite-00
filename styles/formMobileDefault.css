@@ -15,13 +15,13 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-color: #0b98d7;
   height: 100%;
   width: 100%;
 }
 
 body {
-  background: radial-gradient(#0b98d7, #7cdafb); /* Example gradient */
+  background: radial-gradient(#0b98d7, #7cdafb);
 }
 
 a {
@@ -158,10 +158,10 @@ form {
 }
 
 #formHeadline {
-  padding-top: clamp(25px, 6vh, 50px);
-  padding-bottom: clamp(25px, 6vh, 50px);
-  font-size: 45px;
-  font-size: clamp(25px, 6vh, 45px);
+  padding-top: clamp(20px, 6vh, 50px);
+  padding-bottom: clamp(20px, 6vh, 50px);
+  font-size: clamp(20px, 6vh, 45px);
+  line-height: 0.95;
   /* font-size: clamp(25px, 6vh, 45px); */
   text-align: center;
   font-family: "diaBold", sans-serif;
@@ -199,14 +199,13 @@ form {
   /* height: 100%; */
   resize: none;
   margin-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 30px;
   padding-bottom: 5px;
   padding-left: 20px;
-  border-radius: 30px;
+  border-radius: 50px;
   font-size: 20px;
 
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
 }
 
 #sendButton {

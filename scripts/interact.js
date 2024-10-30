@@ -36,7 +36,7 @@ export function handleRotation(e) {
 }
 
 export function handleZoom(e) {
-  const zoomFactor = 0.1;
+  const zoomFactor = 0.0333;
   const delta = e.deltaY > 0 ? -zoomFactor : zoomFactor;
   const maxScale = 4.0; // Define a maximum scale value
 

@@ -6,6 +6,7 @@ let formTl, formCloseTl;
 export const formState = {
   isClosed: true,
   width: 1.1,
+  height: 1,
 };
 
 formTl = gsap.timeline({
@@ -18,8 +19,6 @@ formCloseTl = gsap.timeline({
 });
 
 export function prepareTimeline() {
-  console.log("running prepare timeline");
-
   formTl
     .to("#closeButton", {
       width: 50,
@@ -32,10 +31,12 @@ export function prepareTimeline() {
     })
     .to(formState, {
       width: 1,
+      height: 1,
     })
     .to("#mailForm", {
-      margin: "20px",
-      height: "calc(100% - 60px)",
+      // margin: "20px",
+      // height: "calc(100% - 60px)",
+      height: "100%",
       backgroundColor: "#ffebe4",
       duration: 0.5,
       onComplete: () => {
@@ -55,9 +56,10 @@ export function prepareTimeline() {
     })
     .to(formState, {
       width: 0.1,
+      height: 0.1,
     })
     .to("#mailForm", {
-      margin: 0,
+      // margin: 0,
       height: "10%",
       backgroundColor: "transparent",
       duration: 0.5,
