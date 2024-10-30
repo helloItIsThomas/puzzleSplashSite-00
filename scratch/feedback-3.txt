@@ -1,17 +1,5 @@
 
 
-If mobile, mailForm height will lerp to 100%
-If not mobile, mailForm height will lerp to "calc(100% - 60px)"
-
-
-
-
-
-
-
-
-
-
 it still feels a bit big
 if we can make it look like 80% zoom on chrome.
 
@@ -24,15 +12,7 @@ On desktop the messages field could be a bit smaller and the space allocated to 
 
 ANIMATION
 
-Instagram and Linkedin appear first.
-It feels like 2 or 3 mechanical, separate motions.
-It would be nice if they all felt like it was in one quick pop.
-Also the padding change where the x button and the contact button move places is not great,
-they should be in the same place.
 
-For mobile, get rid of the margin on the edges of the form.
-
-The socials appearing first is not cool.
 The previous animation is closer,
 make it like this but with the proper construction.
 If the old one was timed nicer would be good.
