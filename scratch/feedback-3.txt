@@ -1,3 +1,17 @@
+
+
+If mobile, mailForm height will lerp to 100%
+If not mobile, mailForm height will lerp to "calc(100% - 60px)"
+
+
+
+
+
+
+
+
+
+
 it still feels a bit big
 if we can make it look like 80% zoom on chrome.
 
