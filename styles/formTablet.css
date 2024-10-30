@@ -3,7 +3,22 @@
     margin: 20px;
   }
 
+  #closeButton {
+    width: 200px;
+    /* height: 50px; */
+  }
+
   #copyright {
     font-size: 16px;
+  }
+
+  #formFields input {
+    height: 70px;
+    padding-top: 10px;
+    border-radius: 1000px;
+  }
+
+  #formFields textarea {
+    padding-top: 20px;
   }
 }

@@ -51,7 +51,7 @@ export function setMailFormW() {
     // console.log("sizing for a closed form");
   } else {
     if (localMobileCheck) mailForm.style.width = `100%`;
-    else mailForm.style.width = "600px";
+    else mailForm.style.width = "500px";
     // console.log("sizing for an open form");
   }
 }

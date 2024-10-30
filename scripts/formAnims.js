@@ -35,7 +35,7 @@ export function prepareTimeline() {
           },
         })
         .to("#closeButton", {
-          width: 50,
+          width: 40,
           onComplete: handleComplete,
           onReverseComplete: handleComplete,
         })

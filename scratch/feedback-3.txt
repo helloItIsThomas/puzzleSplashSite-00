@@ -1,33 +1,11 @@
 
 
-it still feels a bit big
+On desktop the messages field could be a bit smaller and the space allocated to the padding before and after the Customer Services. Maybe taking off 10 - 15 % of the text message box.
 if we can make it look like 80% zoom on chrome.
 
-on mobile, the font size feels ok.
-The x button should be smaller.
-The white space on the entry fields on mobile feels big.
 
-On desktop the messages field could be a bit smaller and the space allocated to the padding before and after the Customer Services. Maybe taking off 10 - 15 % of the text message box.
-
-
-ANIMATION
-
-
-The previous animation is closer,
-make it like this but with the proper construction.
-If the old one was timed nicer would be good.
-The order for the old animation is pretty good actually.
-Just make it look like the old animation and change the sizing and the rest of the above.
-
-// ***
-Press contact
-1. Off white box appears
-2. button shape change + links appear
-
-Close box:
-1. Reverse
-*** //
-
+/**
 ASCII TOOL
 Fix the color blue for the ascii tool.
 The other thing is when downloading video, when you play the video back, it's very jittery.
+**/

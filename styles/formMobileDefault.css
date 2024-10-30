@@ -104,8 +104,8 @@ form {
 /* CLOSE HERE YO */
 #closeButton {
   overflow: hidden;
-  width: 200px;
-  height: 50px;
+  width: 180px;
+  height: 40px;
   left: 0px;
 
   border-radius: 1000000000px;
@@ -179,11 +179,11 @@ form {
 
 #formFields input {
   width: 100%;
-  height: 80px;
+  height: 50px;
   border: none;
   box-sizing: border-box;
   margin-bottom: 3px;
-  padding-top: 10px;
+  padding-top: 12px;
   padding-bottom: 10px;
   padding-left: 20px;
   border-radius: 1000px;
@@ -199,10 +199,10 @@ form {
   /* height: 100%; */
   resize: none;
   margin-bottom: 10px;
-  padding-top: 30px;
+  padding-top: 15px;
   padding-bottom: 5px;
   padding-left: 20px;
-  border-radius: 50px;
+  border-radius: 25px;
   font-size: 20px;
 
   background: rgba(255, 255, 255, 0.8);
@@ -210,12 +210,12 @@ form {
 
 #sendButton {
   width: 100%;
-  height: 50px;
-  font-size: 22px;
+  height: 40px;
+  font-size: 20px;
   box-sizing: border-box;
   border: none;
   margin-top: 5px;
-  padding-top: 10px;
+  padding-top: 7px;
   padding-bottom: 10px;
   color: white;
   background-color: black;
