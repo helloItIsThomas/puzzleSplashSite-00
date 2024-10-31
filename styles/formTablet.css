@@ -8,6 +8,12 @@
     /* height: 50px; */
   }
 
+  #formHeadline {
+    padding-top: clamp(20px, 8vh, 90px);
+    padding-bottom: clamp(20px, 8vh, 90px);
+    font-size: clamp(20px, 5vh, 38px);
+  }
+
   #copyright {
     font-size: 16px;
   }
